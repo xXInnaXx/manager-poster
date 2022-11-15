@@ -22,7 +22,11 @@ public class ManagerAfisha {
         movies = tmp;
     }
 
-    public String[] getLastMovies() {
+    public String[] findAll() {
+        return movies;
+    }
+
+    public String[] findLast() {
         String[] tmp;
         int length = movies.length;
         int edge;

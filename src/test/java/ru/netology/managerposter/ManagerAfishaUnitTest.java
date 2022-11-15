@@ -12,7 +12,7 @@ class ManagerAfishaUnitTest {
         for (int i = 0; i < 10; i++) {
             managerAfisha.add("BRIGADA" + i);
         }
-        String[] lastMovies = managerAfisha.getLastMovies();
+        String[] lastMovies = managerAfisha.findLast();
         assertEquals(3, lastMovies.length);
     }
     @Test
@@ -21,7 +21,7 @@ class ManagerAfishaUnitTest {
         for (int i = 0; i < 20; i++) {
             managerAfisha.add("BRIGADA" + i);
         }
-        String[] lastMovies = managerAfisha.getLastMovies();
+        String[] lastMovies = managerAfisha.findLast();
         assertEquals(10, lastMovies.length);
     }
     @Test
@@ -30,7 +30,16 @@ class ManagerAfishaUnitTest {
         for (int i = 0; i < 3; i++) {
             managerAfisha.add("BRIGADA" + i);
         }
-        String[] lastMovies = managerAfisha.getLastMovies();
+        String[] lastMovies = managerAfisha.findLast();
+        assertEquals(3, lastMovies.length);
+    }
+    @Test
+    void shouldReturnAllMovies() {
+        ManagerAfisha managerAfisha = new ManagerAfisha();
+        for (int i = 0; i < 3; i++) {
+            managerAfisha.add("BRIGADA" + i);
+        }
+        String[] lastMovies = managerAfisha.findAll();
         assertEquals(3, lastMovies.length);
     }
 }
