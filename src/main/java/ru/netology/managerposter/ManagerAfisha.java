@@ -2,7 +2,7 @@ package ru.netology.managerposter;
 
 public class ManagerAfisha {
     private String[] movies = new String[0];
-    private int moviesCount;
+    private final int moviesCount;
 
     public ManagerAfisha() {
         moviesCount = 10;

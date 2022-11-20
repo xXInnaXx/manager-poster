@@ -2,44 +2,46 @@ package ru.netology.managerposter;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class ManagerAfishaUnitTest {
+
+    private static final String BRIGADA = "BRIGADA";
+    private static final String SECOND = BRIGADA + 2;
+    private static final String THIRD = BRIGADA + 3;
+    private static final String FOURTH = BRIGADA + 4;
 
     @Test
     void shouldReturnLastThreeFromTen() {
         ManagerAfisha managerAfisha = new ManagerAfisha(3);
-        for (int i = 0; i < 10; i++) {
-            managerAfisha.add("BRIGADA" + i);
-        }
+
+        managerAfisha.add(BRIGADA + 1);
+        managerAfisha.add(SECOND);
+        managerAfisha.add(THIRD);
+        managerAfisha.add(FOURTH);
+
         String[] lastMovies = managerAfisha.findLast();
-        assertEquals(3, lastMovies.length);
+        assertArrayEquals(new String[]{FOURTH, THIRD, SECOND}, lastMovies);
     }
+
     @Test
-    void shouldReturn10From20() {
+    void shouldReturnAllIfCountMovieMoreThanAll() {
         ManagerAfisha managerAfisha = new ManagerAfisha();
-        for (int i = 0; i < 20; i++) {
-            managerAfisha.add("BRIGADA" + i);
-        }
+
+        managerAfisha.add(BRIGADA);
+        managerAfisha.add(SECOND);
+        managerAfisha.add(THIRD);
+
         String[] lastMovies = managerAfisha.findLast();
-        assertEquals(10, lastMovies.length);
+        assertArrayEquals(new String[]{THIRD, SECOND, BRIGADA}, lastMovies);
     }
-    @Test
-    void shouldReturn0IfCountMovieMoreThanAll() {
-        ManagerAfisha managerAfisha = new ManagerAfisha();
-        for (int i = 0; i < 3; i++) {
-            managerAfisha.add("BRIGADA" + i);
-        }
-        String[] lastMovies = managerAfisha.findLast();
-        assertEquals(3, lastMovies.length);
-    }
+
     @Test
     void shouldReturnAllMovies() {
         ManagerAfisha managerAfisha = new ManagerAfisha();
-        for (int i = 0; i < 3; i++) {
-            managerAfisha.add("BRIGADA" + i);
-        }
+        managerAfisha.add(BRIGADA);
+
         String[] lastMovies = managerAfisha.findAll();
-        assertEquals(3, lastMovies.length);
+        assertArrayEquals(new String[]{BRIGADA}, lastMovies);
     }
 }
