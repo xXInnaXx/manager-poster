@@ -44,4 +44,36 @@ class ManagerAfishaUnitTest {
         String[] lastMovies = managerAfisha.findAll();
         assertArrayEquals(new String[]{BRIGADA}, lastMovies);
     }
+    @Test
+    void shouldMoviesSizeMoreThanCount() {
+        ManagerAfisha managerAfisha = new ManagerAfisha(2);
+        managerAfisha.add(BRIGADA);
+        managerAfisha.add(SECOND);
+        managerAfisha.add(THIRD);
+
+        String[] lastMovies = managerAfisha.findLast();
+
+        assertArrayEquals(new String[]{THIRD, SECOND}, lastMovies);
+    }
+    @Test
+    void shouldMoviesSizeEqualsToCount() {
+        ManagerAfisha managerAfisha = new ManagerAfisha(2);
+        managerAfisha.add(BRIGADA);
+        managerAfisha.add(SECOND);
+
+        String[] lastMovies = managerAfisha.findLast();
+
+        assertArrayEquals(new String[]{SECOND, BRIGADA}, lastMovies);
+    }
+
+    @Test
+    void shouldMoviesSizeLessThanCount() {
+        ManagerAfisha managerAfisha = new ManagerAfisha(3);
+        managerAfisha.add(BRIGADA);
+        managerAfisha.add(SECOND);
+
+        String[] lastMovies = managerAfisha.findLast();
+
+        assertArrayEquals(new String[]{SECOND, BRIGADA}, lastMovies);
+    }
 }
